@@ -69,7 +69,7 @@
 			var scaleY = 1.0;
 			var fX=0,fY=0,sX=0,sY=0;
 			var pool=new Array(rows);
-            window.onload = function()
+            function load()
 			{
 				for (var row=0; row <rows; row++)
 				{
@@ -291,6 +291,7 @@
                 <input type="button" id="plus" value="+"><input type="button" id="minus" value="-">
 				<input type="button" id="start" value="start">
 				<input type="button" id="stop" value="stop">
+				<input type="button" id="load" value="load" onclick="load()">
             </div>
         </div>
 		<div id="d1"></div>
