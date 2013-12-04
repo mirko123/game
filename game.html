@@ -83,12 +83,10 @@
 						pool[row][col] = false;
 					}
 				}
-				var element=document.createElement('canvas');
-				var parent = document.getElementsByTagName('body')[0];
+				var element=document.getElementById('canvas');
 				element.id="canvas";
 				element.width=cw;
 				element.height=ch;
-				parent.appendChild(element);
 
                 var canvas = document.getElementById("canvas");
 
@@ -290,6 +288,7 @@
         </script>
     </head>
     <body onmousedown="return false;">
+		<canvas id="canvas">nqma canvas</canvas>
         <div id="wrapper">
             <div id="buttonWrapper">
                 <input type="button" id="plus" value="+"><input type="button" id="minus" value="-">
