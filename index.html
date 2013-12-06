@@ -15,7 +15,7 @@
 
             input[type =
             "button"] {
-				index:100;
+				z-index:100;
                 padding: 5px;
                 width: 30px;
                 margin: 0px 0px 2px 0px;
@@ -26,20 +26,9 @@
 				margin-left:70%;
 				margin-botton:0px;
 			}
-			#d1
+			canvas
 			{
-				margin-top:20px;
-				margin-botton:0px;
-			}
-			#d2
-			{
-				margin-top:40px;
-				margin-botton:0px;
-			}
-			#d3
-			{
-				margin-top:80px;
-				margin-botton:0px;
+				background-color:green;
 			}
         </style>
         <script>
@@ -69,7 +58,7 @@
 			var scaleY = 1.0;
 			var fX=0,fY=0,sX=0,sY=0;
 			var pool=new Array(rows);
-            function load()
+            window.onload = function()
 			{
 				for (var row=0; row <rows; row++)
 				{
@@ -177,8 +166,6 @@
                 context.strokeStyle = "black";
                 context.stroke();
                 context.restore();
-				document.getElementById("d1").innerHTML="scale="+scaleX;
-				document.getElementById("d2").innerHTML="transX="+(translatePosX)+"</br> transY="+(translatePosY);
             }
 			function click(event)
 			{
@@ -191,7 +178,6 @@
 				var x2=tr2X+col*(sizeX*scaleX)+1*scaleX;
 				var y2=tr2Y+row*(sizeY*scaleY)+1*scaleY;
 				context.fillStyle="#66CCFF";
-				document.getElementById("d3").innerHTML="x1="+event.clientX+" y1="+event.clientY+"</br> x2="+col+" y2="+row;
                 if (pool[row][col] == 0) 
 				{
 					pool[row][col] = 1;
@@ -208,8 +194,8 @@
 				var canvas = document.getElementById("canvas");
 				var context = canvas.getContext("2d");
 				context.fillStyle="#66CCFF";
-				LifeAndDeath();
-				var burzo=setInterval("start()",timer);
+				
+				var burzo=setInterval(LifeAndDeath,timer);
 				function CountOfNeigh(row, col)
 				{
 					if (row == 0 && col == 0) return pool[0][1] + pool[1][0] + pool[1][1];
@@ -291,11 +277,7 @@
                 <input type="button" id="plus" value="+"><input type="button" id="minus" value="-">
 				<input type="button" id="start" value="start">
 				<input type="button" id="stop" value="stop">
-				<input type="button" id="load" value="load" onclick="load()">
             </div>
         </div>
-		<div id="d1"></div>
-		<div id="d2"></div>
-		<div id="d3"></div>
     </body>
 </html>
