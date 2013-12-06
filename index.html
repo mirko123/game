@@ -109,7 +109,6 @@
                     draw(scaleX, scaleY, translatePos2.x, translatePos2.y);}, false);
 					
 				document.getElementById("start").addEventListener("click", start, false);
-				document.getElementById("stop").addEventListener("click", stop, false);
                 canvas.addEventListener("mousedown", function(evt){
                     mouseDown = true;
                     startDragOffset.x = evt.clientX - translatePos.x;
@@ -210,7 +209,7 @@
 				var context = canvas.getContext("2d");
 				context.fillStyle="#66CCFF";
 				LifeAndDeath();
-				burzo=setTimeout("start()",timer);
+				var burzo=setInterval("start()",timer);
 				function CountOfNeigh(row, col)
 				{
 					if (row == 0 && col == 0) return pool[0][1] + pool[1][0] + pool[1][1];
@@ -278,10 +277,11 @@
 						}
 					}
 				}
-			}
-			function stop()
-			{
-				clearTimeout(burzo);
+				document.getElementById("stop").addEventListener("click", stop, false);
+				function stop()
+				{
+					clearInterval(burzo);
+				}
 			}
         </script>
     </head>
